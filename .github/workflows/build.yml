@@ -33,13 +33,13 @@ jobs:
           cd app
           msbuild ParsecVDisplay.csproj /t:Restore
           msbuild ParsecVDisplay.csproj /t:Build /p:Configuration=Release /p:Platform=AnyCPU
-          echo "${{ env.APP_VERSION }}+${{ env.SHORT_SHA }}" >> bin\.version
+          echo "${{ env.APP_VERSION }}+${{ env.SHORT_SHA }}" >> bin\version
 
       - name: Upload build output
         uses: actions/upload-artifact@v4
         with:
           name: ParsecVDisplay-v${{ env.APP_VERSION }}-${{ env.SHORT_SHA }}
           path: |
-            app/bin/.version
+            app/bin/version
             app/bin/ParsecVDisplay.exe
             app/bin/ParsecVDisplay.exe.config
